@@ -1,0 +1,16 @@
+{
+  "version": "vg_calibrated_13954_for_primary",
+  "decision_model": "FoR-primary",
+  "for_threshold": 0.555,
+  "aasist_role": "supporting_only",
+  "calibration_samples": 13954,
+  "human_samples": 6977,
+  "ai_samples": 6977,
+  "full_set_results": {
+    "human_false_positive_rate": 0.000859396,
+    "ai_detection_rate": 0.909846,
+    "for_auc": 0.9995967421,
+    "aasist_auc_as_spoof_probability": 0.772613702
+  },
+  "notes": "AASIST was not used as an independent accusation signal because its score distribution overlaps heavily on this out-of-domain set. Cross-validated two-score logistic fusion did not provide a robust zero/near-zero-FP improvement over FoR-primary. FoR remains the production decision signal; AASIST is retained for model breakdown/telemetry."
+}

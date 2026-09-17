@@ -1,0 +1,20 @@
+{
+  "dataset": "User-provided labeled calibration set",
+  "samples_total": 13954,
+  "human": 6977,
+  "ai": 6977,
+  "FoR": {
+    "threshold": 0.555,
+    "auc": 0.9995967421,
+    "human_false_positive_rate": 0.000859396,
+    "human_correct_rate": 0.999140604,
+    "ai_detection_rate": 0.909846,
+    "ai_missed_rate": 0.090154
+  },
+  "AASIST": {
+    "auc_when_interpreted_as_spoof_probability": 0.772613702,
+    "role": "supporting evidence only"
+  },
+  "production_decision": "FoR >= 0.555 => Likely AI-generated; FoR < 0.555 => Likely human",
+  "warning": "This is a dataset-specific calibration result, not a guarantee of real-world accuracy."
+}

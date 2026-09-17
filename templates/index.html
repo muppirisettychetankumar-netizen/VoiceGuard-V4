@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="VoiceGuard — AI-powered voice anti-spoofing and voice-clone detection">
+<title>VoiceGuard — Voice Security Intelligence</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="bg-grid"></div>
+<header>
+  <a class="brand" href="#">
+    <span class="logo"><span>V</span></span>
+    <span><strong>VoiceGuard</strong><small>SIH2614 · VOICE SECURITY INTELLIGENCE</small></span>
+  </a>
+  <nav>
+    <a href="#scanner">Scanner</a><a href="#intelligence">Intelligence</a><a href="#how">How it works</a>
+  </nav>
+  <div class="connection"><i id="connDot"></i><span id="connText">Checking engine</span></div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="live-dot"></span> AI-POWERED VOICE SECURITY</div>
+    <h1>Hear the signal.<br><em>Spot the clone.</em></h1>
+    <p>VoiceGuard analyzes speech for synthetic and voice-cloned characteristics using a dual-model anti-spoofing pipeline.</p>
+    <div class="hero-actions"><a class="hero-btn" href="#scanner">🎙 START VOICE SCAN <span>↗</span></a><span class="secure-note">● Audio is not stored · scan history stores metadata only</span></div>
+    <div class="chips"><span>REAL-TIME</span><span>AASIST</span><span>FoR PRIMARY</span><span>CALIBRATED</span></div>
+  </div>
+  <div class="hero-visual">
+    <div class="radar"><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div><div class="sweep"></div><div class="radar-core"><b>V</b><small>GUARD<br>ONLINE</small></div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i></div>
+  </div>
+</section>
+
+<section class="status-strip">
+  <div><span class="strip-icon">◉</span><span><small>DETECTION ENGINE</small><b id="engineStatus">Initializing</b></span></div>
+  <div><span class="strip-icon">◌</span><span><small>ANALYSIS WINDOW</small><b>~4.04 seconds</b></span></div>
+  <div><span class="strip-icon">⌁</span><span><small>LIVE TRANSPORT</small><b>WebSocket ready</b></span></div>
+  <div><span class="strip-icon">◇</span><span><small>DECISION MODE</small><b>FoR primary + AASIST support</b></span></div>
+</section>
+
+<section class="quick-scan">
+  <div class="quick-copy">
+    <div class="eyebrow">FAST START / 30-SECOND DEMO</div>
+    <h2>Put VoiceGuard to the test.</h2>
+    <p>Upload a voice sample and watch the system move from audio signal to a security verdict.</p>
+    <div class="quick-points"><span>01 · PREPROCESS</span><span>02 · DETECT</span><span>03 · FUSE</span><span>04 · DECIDE</span></div>
+  </div>
+  <a class="quick-btn" href="#scanner">Open scanner <span>↓</span></a>
+</section>
+
+<section class="pipeline-strip" aria-label="VoiceGuard detection pipeline">
+  <div><span>INPUT</span><b>Voice audio</b></div><i>→</i>
+  <div><span>ANALYZE</span><b>AASIST + FoR</b></div><i>→</i>
+  <div><span>DECISION</span><b>FoR PRIMARY</b></div><i>→</i>
+  <div><span>OUTPUT</span><b>Risk verdict</b></div>
+</section>
+
+<section id="scanner" class="section">
+  <div class="section-head"><div><div class="eyebrow">01 / VOICE SCANNER</div><h2>Analyze a voice sample</h2><p>Choose a WAV sample for offline analysis, or use live microphone/call-tab capture where supported.</p></div><span class="section-tag">SECURE ANALYSIS</span></div>
+
+  <div class="scanner-grid">
+    <div class="capture-card">
+      <div class="card-label">LIVE CAPTURE</div>
+      <div class="capture-orb" id="captureOrb"><div><span class="mic-symbol">⌁</span><small id="modeText">Ready to monitor</small></div></div>
+      <div class="capture-title">Choose your audio source</div><div class="capture-status"><span class="status-dot"></span><b id="captureStatus">Ready</b><small>Waiting for an audio source</small></div>
+      <div class="capture-actions">
+        <button id="micBtn" class="btn primary">🎙 Start microphone</button>
+        <button id="systemBtn" class="btn secondary">▣ Capture call/tab</button>
+        <button id="stopBtn" class="btn danger" disabled>Stop monitoring</button>
+      </div>
+      <div class="capture-hint" id="captureHint">For supported browser/VoIP audio, choose <b>Capture call/tab</b> and enable audio sharing. Protected cellular-call audio is not directly exposed to browsers.</div>
+    </div>
+
+    <div class="upload-card">
+      <div class="card-label">OFFLINE CHECK</div>
+      <label class="dropzone" id="dropzone">
+        <input id="file" type="file" accept=".wav,audio/wav">
+        <span class="upload-icon">↑</span>
+        <strong>Drop a WAV file here</strong>
+        <span>or <u>browse from your device</u></span>
+        <small>WAV · speech sample · analysis runs on the VoiceGuard engine</small>
+      </label>
+      <div class="file-preview" id="filePreview"><span class="file-icon">♪</span><div><b id="fileName">No file selected</b><small id="fileMeta">Choose a sample to begin</small></div><span id="fileState">—</span></div>
+      <button id="uploadBtn" class="btn analyze" disabled>Analyze sample <span>→</span></button>
+    </div>
+  </div>
+</section>
+
+<section id="intelligence" class="section result-section">
+  <div class="section-head"><div><div class="eyebrow">02 / DETECTION INTELLIGENCE</div><h2>Risk signal</h2><p>The result combines the primary anti-spoofing model with the supporting trained classifier.</p></div><span class="section-tag" id="resultTag">WAITING FOR AUDIO</span></div>
+
+  <div class="result-grid">
+    <article class="result-card verdict-card">
+      <div class="card-top"><span class="card-label">LIVE VERDICT</span><span class="risk-pill" id="state">IDLE</span></div><div class="result-banner" id="resultBanner"><span class="result-dot"></span><span id="resultBannerText">No analysis yet</span></div>
+      <div class="verdict-main"><div><div class="verdict-kicker" id="verdictKicker">READY</div><h3 id="verdict">Waiting for speech</h3><p id="verdictDetail">Start a scan to generate a voice-risk assessment.</p></div><div class="score-ring" id="gauge"><div><strong id="prob">—</strong><small>AI probability</small></div></div></div>
+      <div class="metric-row"><div><span>Human signal</span><b id="human">—</b><div class="meter"><i id="humanBar"></i></div></div><div><span>AI / synthetic</span><b id="ai">—</b><div class="meter"><i id="aiBar"></i></div></div></div>
+      <div class="confidence-row"><span>Confidence</span><div class="meter"><i id="confidenceBar"></i></div><b id="confidence">—</b></div>
+    </article>
+
+    <article class="result-card model-card">
+      <div class="card-top"><div><span class="card-label">MODEL BREAKDOWN</span><h3>Two signals, one decision</h3></div><span class="mini-live">● LIVE</span></div>
+      <div class="model-block"><div class="model-name"><span class="model-badge">A</span><div><b>AASIST</b><small>Corroborating anti-spoofing signal</small></div><strong id="aasistScore">—</strong></div><div class="model-meter"><i id="aasistBar"></i></div></div>
+      <div class="model-block"><div class="model-name"><span class="model-badge alt">F</span><div><b>FoR MODEL</b><small>Calibrated primary decision model</small></div><strong id="forScore">—</strong></div><div class="model-meter"><i id="forBar"></i></div></div>
+      <div class="fusion-box"><div><span>DECISION MODE</span><b>FoR PRIMARY · AASIST SUPPORT</b></div><div><span>FINAL SIGNAL</span><b id="fusionScore">—</b></div></div>
+      <p class="smallnote">Scores are risk signals, not proof of speaker identity. Disagreement between models is treated conservatively.</p>
+    </article>
+  </div>
+
+  <div class="explain-card">
+    <div><span class="card-label">WHY THIS RESULT?</span><h3 id="explainTitle">Waiting for analysis</h3></div>
+    <p id="explainText">VoiceGuard will explain the current decision after an audio sample is analyzed.</p>
+    <div class="decision-path"><span id="pathA">AASIST</span><i>+</i><span id="pathF">FoR</span><i>→</i><strong id="pathResult">Decision</strong></div>
+  </div>
+  <div class="recommendation" id="recommendation">
+    <div class="recommendation-icon">!</div>
+    <div><span class="card-label">SECURITY GUIDANCE</span><h3 id="recommendationTitle">Run a scan to receive guidance</h3><p id="recommendationText">VoiceGuard provides a risk signal. For high-risk or suspicious samples, verify the speaker through a trusted second channel.</p></div>
+  </div>
+</section>
+
+<section id="history" class="section history-section">
+  <div class="section-head"><div><div class="eyebrow">03 / SCAN HISTORY</div><h2>Previous voice checks</h2><p>Metadata only: time, source, verdict and model scores. Voice audio itself is not saved. Render Free storage is temporary; browser history is kept on this device.</p></div><div class="history-actions"><button id="refreshHistory" class="btn secondary">↻ Refresh</button><button id="clearHistory" class="btn danger">Clear history</button></div></div>
+  <div class="history-card"><div class="history-status"><span id="historyStatus">Loading history…</span></div><div class="history-table-wrap"><table class="history-table"><thead><tr><th>Time</th><th>Source</th><th>Name</th><th>Verdict</th><th>AI</th><th>AASIST</th><th>FoR</th><th>Confidence</th></tr></thead><tbody id="historyBody"><tr><td colspan="8">No scan history yet.</td></tr></tbody></table></div></div>
+</section>
+
+<section class="telemetry-section"><div class="eyebrow" style="display:none">03</div>
+  <div class="telemetry-head"><div><div class="eyebrow">03 / SYSTEM TELEMETRY</div><h2>Engine health</h2></div><span id="stream" class="online-tag">Offline</span></div>
+  <div class="telemetry-grid">
+    <div><small>WINDOW</small><b id="window">4.04 s</b><span>Rolling audio window</span></div>
+    <div><small>MODEL</small><b>ONNX / CPU</b><span>AASIST inference</span></div>
+    <div><small>UPDATES</small><b>~1 sec</b><span>Live result cadence</span></div>
+    <div><small>TRANSPORT</small><b>WebSocket</b><span>Streaming analysis path</span></div>
+  </div>
+  <div class="signal-visual"><div class="signal-title"><span>LIVE SIGNAL ACTIVITY</span><small id="signalText">Awaiting audio</small></div><div class="activity" id="activity"></div></div>
+</section>
+
+<section id="how" class="section how-section">
+  <div class="section-head"><div><div class="eyebrow">05 / HOW IT WORKS</div><h2>From voice to security signal</h2><p>A clear pipeline designed for rapid screening and explainable decisions.</p></div></div>
+  <div class="steps">
+    <div><span>01</span><b>CAPTURE</b><h3>Collect accessible audio</h3><p>Microphone, supported call/tab audio, or an uploaded WAV sample.</p></div>
+    <div><span>02</span><b>PREPROCESS</b><h3>Standardize the signal</h3><p>Audio is converted to the required format and prepared for model analysis.</p></div>
+    <div><span>03</span><b>DETECT</b><h3>Run two models</h3><p>FoR provides the calibrated primary decision signal; AASIST supplies corroborating anti-spoofing evidence.</p></div>
+    <div><span>04</span><b>DECIDE</b><h3>Classify and log</h3><p>The calibrated FoR boundary returns the risk verdict while metadata is recorded in scan history.</p></div>
+  </div>
+</section>
+
+<section class="callout">
+  <div><span class="shield">◇</span><div><b>Built for responsible voice security</b><p>VoiceGuard is an academic prototype. A detection score is a risk indicator, not biometric proof of identity.</p></div></div>
+  <span class="sihtag">SIH2614</span>
+</section>
+
+<footer><span>VoiceGuard · SIH2614</span><span>Academic prototype · Voice anti-spoofing</span><span>GitHub → Render · Production demo</span></footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastIcon">!</span><div><b id="toastTitle">VoiceGuard</b><small id="toastText"></small></div></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: voiceguard-sih2614
+    runtime: python
+    buildCommand: pip install --no-cache-dir -r requirements.txt && python download_model.py
+    startCommand: gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT --timeout 180 --keep-alive 30 app:app
+    plan: free
